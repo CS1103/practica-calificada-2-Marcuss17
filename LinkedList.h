@@ -89,6 +89,9 @@ public:
             crearNodos(num);
         }
     }
+
+    template<class M>
+    friend::std::istream & operator >>(std::istream & in, LinkedList<M>& );
 };
 
 template<typename M>
@@ -99,6 +102,15 @@ std::ostream & operator << (std::ostream & out, const LinkedList<M>& L){
         it = it->next;
     }
     return out;
+}
+
+template<typename M>
+std::istream & operator >>(std::istream & in, LinkedList<M>&  L){
+    std::cout <<"Ingrese los valores: " << std::endl;
+    M input;
+    in >> input;
+    L.crearNodos(input);
+    return in;
 }
 
 #endif //CS1103_PC2_201902_LINKEDLIST_H

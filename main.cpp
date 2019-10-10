@@ -19,6 +19,9 @@ int main(){
     //Lee los elementos desde un archivo
     L1.load_from("/home/eduardo/Desktop/Utec/Poo2/practica-calificada-2-Marcuss17/cmake-build-debug/data.txt");
 
+    //Implementada sobrecarga operador >>
+    cin >> L1;
+
     //Imprimir los elementos de la lista, sobrecarga de  <<
     cout << "Los elementos de la lista son: " << endl;
     cout << L1;
