@@ -66,14 +66,18 @@ public:
         }
     }
 
+    void clear(){
+        while(head != nullptr){
+            head = head->next;
+        }
+    }
+
     void load_from (const string& file_name){
         ifstream file(file_name);
         if (!file.is_open()){
             std::cout<< "File is not open!";
         }
-        while(head != nullptr){
-            head = head->next;
-        }
+        clear();
         string fila;
         while(getline(file,fila)){
             node* temp = new node();
