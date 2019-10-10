@@ -22,6 +22,7 @@ private:
 public:
     node* tail = nullptr;
     node* head = nullptr;
+
     T get_max() {
         T mayor = head->val;
         auto it = head;
@@ -36,17 +37,11 @@ public:
 
     void insert (T item){
         if(head == nullptr){
-            node* temp = new node();
-            temp->val = item;
-            temp->next = head;
-            head = temp;
-            tail = temp;
+            crearNodos(item);
+            tail = head;
         }
         else{
-            node* temp = new node();
-            temp->val = item;
-            temp->next = head;
-            head = temp;
+            crearNodos(item);
         }
     }
 
@@ -72,6 +67,13 @@ public:
         }
     }
 
+    void crearNodos(T item){
+        node* temp = new node();
+        temp->val = item;
+        temp->next = head;
+        head = temp;
+    }
+
     void load_from (const string& file_name){
         ifstream file(file_name);
         if (!file.is_open()){
@@ -80,14 +82,11 @@ public:
         clear();
         string fila;
         while(getline(file,fila)){
-            node* temp = new node();
             std::stringstream ss (fila);
             string str;
             getline(ss,str);
             int num = stoi(str);
-            temp->val = num;
-            temp->next = head;
-            head = temp;
+            crearNodos(num);
         }
     }
 };
